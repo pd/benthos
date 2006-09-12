@@ -1,0 +1,49 @@
+Benthos was originally written in Java, but I got frustrated about
+the speed and decided to move back to C. It's been a long time since
+I've touched C, so this is going to be a real mess. Initial results
+are very promising, though; my Java version managed about 350k nodes
+per second in perft, while this is doing around 3 million.
+
+I have made every effort to sacrifice performance for readability.
+I'm not interested in writing the best engine around, or even being
+able to beat another semi-working engine of similar quality. I just
+fine chess programming inexplicably enjoyable. I have no qualms
+with completely ripping off other programs, because I'm such a poor
+programmer that I _still_ manage to break things. So I owe a lot
+to the effort of others.
+
+I'm pretty sure this engine qualifies as a clone, even though 98%
+of the code is my own (as evidenced by the god awful quality), as
+I do nothing new and have the same general style as many other
+engines. Crafty and Glaurung have been the primary victims of my
+theft.
+
+A fair amount of design has been ganked from Crafty, though primarily
+the heavy use of macros to clean up the code. The perft code, however,
+is straight out of the OptionPerft() method in Crafty, and just
+adapted to fit the rest of my code. Originally, this was because I
+had been using Crafty's -DTRACE option to debug my perft results,
+but now it's because I realize it's a clean and understandable way
+of implementing it.
+
+The sliding attack map initialization style was taken from King's
+Out, because it's the most legible and reasonable way of doing it
+I've seen. I had also used it in my Java engine. King's Out is
+phenomenally well written, extremely easy to understand, and has
+just generally been a very good reference point for how things
+are done. I strongly recommend reading it if you're new to chess
+programming.
+
+My popcnt() and lsb()/poplsb() methods were taken from Greko, though
+I think they're versions available on the interwebs somewhere. Either
+way, credits don't belond with me.
+
+I found the Mersenne PRNG in Glaurung, and trusting that Tord Romstad
+knew far better than I what a reliable PRNG would be, I used it as
+well. It was originally authored by Takuji Nishimura and Makoto
+Matsumoto.
+
+The original time calculation was taken from Scatha (which I now
+realize is just hexagonal Glaurung, but had no idea at the time), but
+I don't like it and will probably replace it with my own scheme once
+I have a better idea of how to do it.

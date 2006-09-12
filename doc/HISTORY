@@ -1,0 +1,22 @@
+Version 0.1: September 12, 2006
+  - First release put on the SVN, with no real features.
+  - Completely non-portable. Compiles in Cygwin for me, and that's
+    all I care about for now.
+  - Perft and the EPD suite testing are in separate modules. Decent
+    perft speed, averaging 2.8-3.2 million nodes per second.
+  - Extremely basic search implementation, with move ordering
+    only at the root based on the results of iterative deepening.
+    Basic hash table usage. No quiescence search.
+  - Evaluation consists entirely of material, including the
+    value scaling detailed in Larry Kaufmann's paper "The
+    Evaluation of Material Imbalances in Chess." Nothing more.
+  - Against an engine that essentially just makes random moves,
+    Benthos is pretty good. Against anything that has the
+    slightest idea how to play chess, Benthos is an abysmal
+    failure. While it is consistently beating Eden 0.0.7, it is
+		doing so in a manner that certainly doesn't reflect the fact
+		that it can search quite literally 100 times faster than
+		Eden...
+  - 189/300 correct results on the Win At Chess EPD test suite,
+    with 10 seconds per move. This seems pretty decent for how
+    minimal the engine currently is.
